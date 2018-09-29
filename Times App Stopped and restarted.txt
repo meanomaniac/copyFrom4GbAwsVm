@@ -1,0 +1,19 @@
+This VM time - 
+
+1) 	Stopped: 11/1/2017: 12:34 AM
+	Started: 11/1/2017: 12:34 AM
+
+2) 	Stopped: 12/17/2017: 11:23 PM
+	Started: 12/17/2017: 11:42 PM
+
+3) 	Stopped: 12/18/2017: 12:17 AM
+	Started: 12/18/2017: 12:53 AM
+
+4) 	Stopped: 12/18/2017: 1:13 AM
+	Started: 12/18/2017: 2:23 PM
+5) 	Stopped: 1/17/2018: 8:23 PM
+	Started: 1/17/2018: 8:24 PM
+6) 	Stopped: 4/10/2018: 9:06 AM (by itself)
+	Started: 4/23/2018 12:46 PM
+7) 	Stopped: 5/12/2018: 5:46 PM 
+	Started: 4123/2018 5:46 PM

@@ -1,0 +1,2 @@
+cd C:\Users\Administrator\Desktop\DEV\newProjectTicB
+node --max-old-space-size=2500 app.js
