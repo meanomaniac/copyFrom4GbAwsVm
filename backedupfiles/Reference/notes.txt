@@ -1,0 +1,125 @@
+API limits:
+1) hitBTC - no limits
+2) Cryptopia - nothing mentioned
+3) Poloniex - 6 calls per second for Trading APIs only, but github posts point to all APIs
+4) Novaexchange - nothing mentioned
+5) coinMarketCap - Please limit requests to no more than 10 per minute. Endpoints update every 5 minutes.
+6) yoBit - Server responses are cashed every 2 seconds that is why there is no sense in making requests faster.
+7)coinExchange - nothing mentioned
+
+8) bittrex - We are currently restricting orders to 500 open orders and 200,000 orders a day (older doc apparently from
+stackexchange question: Low: 1 request per second, Medium: 1 request per 10 seconds, High: 1 request per 30 seconds,
+Answer: bittrex-bill: It varies by API call. If you hit the limit, you are abusing it. If you hit the limit a lot, you risk getting banned :)
+Some user: Is greater than 1 minute consistently 24/7 within an acceptable use?
+bittrex-bill: yes,
+suggestion - try to cap the requests around 1 request per minute per API method)
+
+9) livecoin - The following restrictions are applied for API calls:
+1. Only 60 API calls (any calls) are allowed over a period of 60 seconds from one IP address.
+2. Only 10 simultaneous API calls for opening/cancelling orders are allowed. Points system is applied for operating with API.
+You start with 0 points. New order or cancelling existing one are increasing your counter to 1 point.
+Maximum allowed points is 10, when it reaches 11 points, your API will be locked for 2 seconds to allow counter to drop to 10 points.
+Every 2 seconds your counter drops by 1 point. Nonetheless, if you have reached 11 points and do not do new calls,
+your counter will drop to 0 for 10 seconds.
+Please keep in mind that we block IP for 20 minutes in case of violating limits - 60 calls per 60 seconds.
+All calls are to be counted, private and public. IP will be automatically unlocked after 20 minutes.
+
+/*
+var setIntervalSynchronous = function (func, delay) {
+  var intervalFunction, timeoutId, clear;
+  // Call to clear the interval.
+  clear = function () {
+    clearTimeout(timeoutId);
+  };
+  intervalFunction = function () {
+    func();
+    timeoutId = setTimeout(intervalFunction, delay);
+  }
+  // Delay start.
+  timeoutId = setTimeout(intervalFunction, delay);
+  // You should capture the returned function for clearing.
+  return clear;
+};
+
+//writeAllQualifiedMarketsToDB (5000, thirtySecThreshold);
+// writeAllQualifiedMarketsToDB (300000, fiveMinThreshold);
+
+
+function writeAllQualifiedMarketsToDB (timeGap, changeThreshold) {
+  var coinMarketCapObj = {}, bittrexObj = {}, livecoinObj = {}, cryptopiaObj = {}, novaexchangeObj = {},
+  hitBTCObj = {}, yoBitObj = {}, poloniexObj = {}, coinExchangeObj = {};
+  // var exchangeObjs = [coinMarketCapObj, bittrexObj, livecoinObj, cryptopiaObj, novaexchangeObj, hitBTCObj, yoBitObj, poloniexObj, coinExchangeObj];
+  var exchangeObjs = [hitBTCObj];
+  setIntervalSynchronous (function () {
+    getAllMarketInfo (exchangeObjs, changeThreshold);}, timeGap);
+}
+*/
+
+// orderHistory.getOrderHistory('cryptopia', ['DOT_BTC'], -1);
+// orderHistory.getOrderHistory('bittrex', ['BTC-LTC'], -1);
+// orderHistory.getOrderHistory('hitBTC', ['BCNBTC'], -1);
+// orderHistory.getOrderHistory('livecoin', ['BTC/USD'], -1);
+// orderHistory.getOrderHistory('poloniex', ['BTC_ETH'], -1);
+// orderHistory.getOrderHistory('yoBit', ['eth_btc'], -1);
+// coinExchange.getOrderHistory(['87'], -1);
+// orderHistory.getOrderHistory('novaexchange', ['BTC_LTC'], -1);
+
+// openOrders.getOpenOrders('cryptopia', ['ZSE_BTC'], -1);
+// openOrders.getOpenOrders('bittrex', ['BTC-LTC'], -1);
+// openOrders.getOpenOrders('hitBTC', ['BCNBTC'], -1);
+// openOrders.getOpenOrders('livecoin', ['BTC/USD'], -1);
+// openOrders.getOpenOrders('poloniex', ['BTC_NXT'], -1);
+// openOrders.getOpenOrders('yoBit', ['eth_btc'], -1);
+// coinExchange.getOpenOrders(['87'], -1);
+// openOrders.getOpenOrders('novaexchange', ['BTC_LTC'], -1);
+
+// cryptopia.ticker('cryptopia', {}, 0.1, tickerDBColumns);
+// cryptopia.openOrders(['ZSE_BTC'], -1);
+// cryptopia.orderHistory(['4CHN_BTC'], -1);
+// stdGetPublicData.ticker('coinMarketCap', {}, 0.1, tickerDBColumns);
+// stdGetPublicData2.getAllMarkets('yoBit', {}, 0.1, tickerDBColumns);
+// coinExchange({}, 0.1, tickerDBColumns);
+
+
+
+
+
+ // coinMarketCap.ticker();
+ // bittrex();
+ // livecoin();
+ // cryptopia.openOrders('AC_BTC');
+ // novaexchange ();
+ // hitBTC ();
+ // yoBit();
+ // poloniex ();
+ // coinExchange();
+ // cryptopia.orderHistory('AC/BTC', [24], -1);
+
+ /*
+ run a setInterval every 5 mins and insert a record into the DB if the new value of a market is more than its value 5 mins ago by
+ atleast .0001 (1/10000). Run another setInterval every 30 seconds and insert a record into the DB if the new value of a market is more
+ than its value 30 secs ago by atleast .1 (1/10)s
+
+ return an object with all markets from all the ticker functions (exchanges) that the main app.js can use and loop through each market
+ to calculate the above conditions and add to a database when the criteria is met. Put all this into a function that accepts
+ a time interval and the changeAcceptance criteria, which you can use to make 2 different calls based on the 2 different conditions that
+ you've described aboves.
+ Make a tables for each of the exchanges with typically five columns: tradePair, askPriceUSD, askPriceBTC, recordTime, timeSincePreviousEntry
+ All four columns except askPriceUSD are obtained from the exchange api. askPriceUSD may only be avialble for BTC itself (BTC-USD).
+ If BTC-USD price isn't available on an exchange then use the one from CoinMarketCap.
+ askPriceUSD for all other market pairs is calculated from askPriceBTC.
+ The object returned by the ticker functions contains values for these above mentioned columns as well as the difference in the
+ askPriceUSD and askPriceBTC from the saved values of the same variables in the last function call. Basically the object contains
+ datat that the DB funcion can parse and write to DB
+
+ CoinMarketCap can have 2 separate columns for askPrice - askPriceUSD, askPriceBTC
+ coinExchange can have an additional column for marketID that it uses/needs
+
+ 1 more tables
+ .1 change over 30 secs:
+ All groups of columsn below - duplicated for both buy and sell
+ exchange, orderType(buy/sell), label, totalAmount (typically in BTC), totalOrders, maxPrice (bid/ask), MinPrice (bid/ask),
+ Market1HrTotalOrders,Market1HrHigh, Market1hrlow, Market1HrTotalVolume
+ and/or the above listed columns for 24 hours
+
+ */

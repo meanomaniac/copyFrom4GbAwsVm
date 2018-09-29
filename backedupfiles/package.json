@@ -1,0 +1,28 @@
+{
+  "name": "newprojectticb",
+  "version": "1.0.0",
+  "description": "neeprojectticb",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meanomaniac/newProjectTicB.git"
+  },
+  "author": "newauthor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meanomaniac/newProjectTicB/issues"
+  },
+  "homepage": "https://github.com/meanomaniac/newProjectTicB#readme",
+  "dependencies": {
+    "mysql": "^2.13.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  }
+}

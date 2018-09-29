@@ -1,0 +1,28 @@
+1) Bittrex (1)
+K:5277fd611d9546819a54bb89d5433375
+S:454f2acbd14045c688207f86ad09ab20
+BA:1fWY3PavuahPCwjBjnedksz6664bBui9K
+
+2) Poloniex (6)
+K:CH7FVPB7-71IRPBAL-KYZQ95ID-6BX2CVCF
+S:d5f650b4579b5866b2841c98ce54ec98ef255d53593484db88a3d89cfaae1347abec98d4de3bd26126a14e3c73a6769caedcea1bb55bc6dd8832b605c88d06db
+BA:19VZPkMk29TPVFeqcL3oEiniz44KqsNHGz
+EA:0x93018c97e845ac7d8eed070f40cdf2f054d25d46
+The minimum amount for deposit is 0.5 ETH
+
+
+3) hitBTC(13)
+
+4) Yobit(25)
+
+5) livecoin (34)
+
+6) Cryptopia (54)
+K:c89b7d6dfef84fca881f305f22e9f918
+S:Z9f6rXbHuUkg0+o6jBMH3yOZtQJwRER0vj78Xt6nwMo=
+BA:1MYzGRdWq5qqujEwBqo8bdGQYhteRDZicx
+EA:0x05ff3e9bb0094baab2b329c35ae114253caa7dcc
+
+7) novaexchange (71)
+
+8) coinExchange (59)
